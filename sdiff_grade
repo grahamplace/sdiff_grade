@@ -1,0 +1,15 @@
+#!/bin/bash
+
+(grade_proj_hw05 &>/dev/null)
+
+# Only grades files with .student_output, which are the ones that failed
+for TESTCASE in $(ls -1 Test_*.java test_*.student_output 2>/dev/null)
+do
+   echo
+   echo "**********************************************************************"
+   echo "* TESTCASE '$TESTCASE' SDIFF"
+   echo "**********************************************************************"
+   echo
+   BASE=$(echo $TESTCASE | rev | cut -f2- -d'.' | rev)
+   sdiff -l $BASE.out $BASE.student_output | cat -n | grep -v -e '($'
+done
