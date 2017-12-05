@@ -1,6 +1,6 @@
 #!/bin/bash
 
-(grade_proj_hw05 &>/dev/null)
+grade_proj_hw05
 
 # Only grades files with .student_output, which are the ones that failed
 for TESTCASE in $(ls -1 Test_*.java test_*.student_output 2>/dev/null)
